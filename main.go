@@ -54,14 +54,22 @@ func main() {
 				temperature, ok := factors["temperature"].(float64)
 				return ok && temperature > 30
 			},
+			func(factors map[string]interface{}) bool {
+				temperature, ok := factors["temperature"].(float64)
+				return ok && temperature < 35
+			},
 		},
 		func(factors map[string]interface{}) {
 			fmt.Println("It's hot! Turn on the AC.")
 		},
 	)
 
-	factors := map[string]interface{}{
+	//factors := map[string]interface{}{
+	//	"temperature": 32.0,
+	//}
+	factors2 := map[string]interface{}{
 		"temperature": 32.0,
 	}
-	ruleEngine.EvaluateRules(factors)
+	//ruleEngine.EvaluateRules(factors)
+	ruleEngine.EvaluateRules(factors2)
 }
